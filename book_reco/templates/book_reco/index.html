@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if book_list %}
+    <ul>
+    {% for b in book_list %}
+        <li><a href="/book_reco/{{ b.book_id }}/">{{ b.name }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
