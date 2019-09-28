@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24e724d4-d132-41d3-8ec4-80fbb0564868" name="Default Changelist" comment="" />
+    <list default="true" id="24e724d4-d132-41d3-8ec4-80fbb0564868" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_reco/templates/book_reco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_reco/templates/book_reco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_reco/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_reco/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_reco/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_reco/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookreco/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookreco/settings.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,11 +23,28 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1RJqX0Z8sfWzUmBp9OfGRKQ4D3W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../mysite" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\YangTaeIl\Desktop\bookreco\book_reco\static\book_reco\js" />
+      <recent name="C:\Users\YangTaeIl\Desktop\bookreco\book_reco\static\book_repo" />
+      <recent name="C:\Users\YangTaeIl\Desktop\bookreco\book_reco" />
+      <recent name="C:\Users\YangTaeIl\Desktop\bookreco\book_reco\templates\book_reco" />
+      <recent name="C:\Users\YangTaeIl\Desktop\bookreco\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\YangTaeIl\Desktop\bookreco\book_reco\templates\book_reco" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -46,5 +70,29 @@
       <updated>1569395581236</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bookreco/settings.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -6,13 +6,23 @@
 </head>
 <body>
     {% if book_list %}
-    <ul>
+    <select id="book" name="book">
     {% for b in book_list %}
-        <li><a href="/book_reco/{{ b.book_id }}/">{{ b.name }}</a></li>
+        <option value="{{ b.book_id }}">{{ b.name }}</option>
     {% endfor %}
-    </ul>
+    </select>
+    <input id="btn" type="button" value="책 추천 받기">
     {% else %}
     <p>No polls are available.</p>
     {% endif %}
+
+<script>
+document.getElementById("btn").onclick = function() {rec()};
+
+function rec() {
+   console.log(document.getElementById("book").value);
+   location.href='/book_reco/'+document.getElementById("book").value;
+}
+</script>
 </body>
 </html>

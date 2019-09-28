@@ -25,7 +25,7 @@ SECRET_KEY = 'p-6!&v4z_cqflk*ca$k53y$2@m-lo=14vmv4l3^kh-ja+mk$hc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["10.20.30.176","10.0.5.128","192.168.43.135","localhost","127.0.0.1","10.100.100.53"]
 
 
 # Application definition

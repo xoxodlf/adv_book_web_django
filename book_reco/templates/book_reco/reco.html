@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if cosim_list %}
+    <ul>
+        <li><a href="{{book.url}}">{{book.name}}</a> </li>
+    {% for c in cosim_list %}
+        <li><a href="{{c.book_id1.url}}">{{c.book_id1.name}}</a>  {{c.sim}}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+
+<script>
+document.getElementById("btn").onclick = function() {rec()};
+
+function rec() {
+   console.log(document.getElementById("book").value);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>BOAZ_책 추천 시스템</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'book_reco/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="{% static 'book_reco/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'book_reco/css/coming-soon.min.css' %}" rel="stylesheet">
+  <link href="{% static 'book_reco/css/custom.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="right-box">
+      <div class="container h-100">
+      <div class="row h-100">
+      <div id="rec" class="col-12 my-auto">
+        <p class="mb-6 text-white rec_text"></p>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="{% static 'book_reco/mp4/bg.mp4' %}" type="video/mp4">
+  </video>
+    <div class="masthead" style="">
+      <div class="masthead-bg"></div>
+      <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-12 my-auto">
+          <div class="masthead-content text-white py-5 py-md-0">
+            <h2 class="mb-3">책을 추천받아보세요!</h2>
+            <p class="mb-6">우리의 추천시스템은
+              <strong>줄거리와 책의 구매자 분포</strong>를 이용하여 책을 추천합니다!</p>
+            <div class="input-group input-group-newsletter">
+              {% if book_list %}
+              <select class="form-control" id="book" name="book" style="height:auto">
+              {% for b in book_list %}
+                 <option value="{{ b.book_id }}">{{ b.name }}</option>
+              {% endfor %}
+              </select>
+              {% else %}
+              <p>No polls are available.</p>
+              {% endif %}
+              <div class="input-group-append">
+                <input class="btn btn-secondary" id="btn" type="button" value="책 추천 받기">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <!--<div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+      <li class="list-unstyled-item">
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="#">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="#">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+  </div>--!>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'book_reco/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'book_reco/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'book_reco/js/coming-soon.min.js' %}"></script>
+  <script src="{% static 'book_reco/js/jquery.cookie.js' %}"></script>
+  <script>
+  var csrftoken = $.cookie('csrftoken');
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+  });
+    $("#btn").on('click', function() {
+            $.ajax({
+                    url: '/book_reco/'+document.getElementById("book").value+'/json/',
+                    async: false,
+                    data: {
+                        book_id: document.getElementById("book").value,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    type: "POST",
+                    contentType : 'application/json',
+                    dataType: "json"
+                })
+                .done(function(json) {
+                    $("#rec").html("");
+                    $.each(json, function(idx,book) {
+                    if(idx==0){
+                      $("#rec").append("<a href='"+book["url"]+"'><p class='mb-6 text-white rec_text'>"+book["name"]+" - "+book["author"]+"</p><a>");
+                    }else{
+                      $("#rec").append("<a href='"+book["url"]+"'><p class='mb-6 text-white rec_text'>"+book["name"]+" - "+book["author"]+" ("+book["sim"]+")</p><a>");
+                    }
+                    });
+                })
+                .fail(function(xhr, status, errorThrown) {
+                    console.log(errorThrown);
+                    console.log(status);
+                });
+        });
+
+  </script>
+</body>
+
+</html>
