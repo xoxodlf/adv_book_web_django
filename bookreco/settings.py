@@ -78,9 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'book_reco',
-        'USER': 'xoxodlf',
-        'PASSWORD': 'red240188',
-        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'djemqmcor',
+        'HOST': 'adv.cot7okauvqc2.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
