@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p-6!&v4z_cqflk*ca$k53y$2@m-lo=14vmv4l3^kh-ja+mk$hc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["ec2-15-164-166-131.ap-northeast-2.compute.amazonaws.com","localhost","127.0.0.1","10.100.100.53"]
+ALLOWED_HOSTS = ["advbook.cmttpzp8xn.ap-northeast-2.elasticbeanstalk.com","ec2-15-164-166-131.ap-northeast-2.compute.amazonaws.com","localhost","127.0.0.1","10.100.100.53"]
 
 
 # Application definition
