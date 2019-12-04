@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24e724d4-d132-41d3-8ec4-80fbb0564868" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_reco/templates/book_reco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_reco/templates/book_reco/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_reco/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_reco/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_reco/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_reco/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookreco/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookreco/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
