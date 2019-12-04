@@ -1,0 +1,29 @@
+@media (min-width: 768px) {
+    .right-box {
+        margin-left: 40.5rem;
+        width: 50%;
+        padding-left: 2%;
+        height: 100%;
+        min-height: 0;
+        padding-bottom: 0;
+        margin-top: 0px;
+    }
+}
+@media (max-width: 768px) {
+    .right-box {
+        margin-top: 328px;
+        height: 60%;
+        min-height: 0;
+        padding-bottom: 0;
+    }
+}
+
+.overlay {
+    background-color:rgb(205, 149, 87,0.7);
+    opacity: 1;
+}
+
+rec_text{
+    font-weight:700;
+    opacity:1
+}
