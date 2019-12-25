@@ -5,7 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from django.shortcuts import render
 from datetime import datetime
-from rest_framework.response import Response
 import pandas as pd
 from django.db import connections
 # Create your views here.
