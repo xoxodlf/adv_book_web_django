@@ -47,6 +47,18 @@
             <h2 class="mb-3">책을 추천받아보세요!</h2>
             <p class="mb-6">우리의 추천시스템은
               <strong>줄거리와 책의 구매자 분포</strong>를 이용하여 책을 추천합니다!</p>
+              <p><a style="text-decoration:none;color:#fff" href='https://qtrial2019q1az1.qualtrics.com/jfe/form/SV_db64gyiuRDP8VYp'> 피드백 하러가기!</a></p>
+              <div class="input-group input-group-newsletter">
+              <select class="form-control" style="margin-bottom:10px;" id="category_id" name="category_id" style="height:auto">
+                 <option value="1">과학</option>
+                 <option value="2">경제경영</option>
+                 <option value="3">전문서적</option>
+                 <option value="4">소설/시/희곡</option>
+                 <option value="5">에세이</option>
+                 <option value="6">자기계발</option>
+                 <option value="7">어린이</option>
+              </select>
+              </div>
             <div class="input-group input-group-newsletter">
               {% if book_list %}
               <select class="form-control" id="book" name="book" style="height:auto">
@@ -95,6 +107,50 @@
   <script src="{% static 'book_reco/js/jquery.cookie.js' %}"></script>
   <script>
   var csrftoken = $.cookie('csrftoken');
+  $('#category_id').change(function(){
+        $.ajax({
+        url: '/book_reco/book_list/',
+        async: false,
+        data: {
+          category_id: $('#category_id').val(),
+        },
+          type: "POST",
+          dataType: "json"
+        })
+        .done(function(json) {
+          html="";
+          $.each(json['books'], function(index, book){
+              html += '<option value="'+book.book_id+'">'+book.name+'</option>';
+            });
+          $('#book').html(html);
+        })
+        .fail(function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+            console.log(status);
+        });
+  });
+
+  function saveLog(category_id,book_id){
+    $.ajax({
+        url: '/book_reco/saveLog/',
+        async: false,
+        data: {
+          book_id: book_id,
+          category_id: category_id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+          type: "POST",
+          dataType: "json"
+        })
+        .done(function(json) {
+          console.log('success');
+        })
+        .fail(function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+            console.log(status);
+        });
+  }
+
   function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -107,24 +163,27 @@
     }
   });
     $("#btn").on('click', function() {
+      console.log(document.getElementById("book").value);
+      console.log(document.getElementById("category_id").value);
             $.ajax({
-                    url: '/book_reco/'+document.getElementById("book").value+'/json/',
+              
+                    url: '/book_reco/json_reco/',
                     async: false,
                     data: {
                         book_id: document.getElementById("book").value,
+                        category_id: document.getElementById("category_id").value,
                         'csrfmiddlewaretoken': '{{ csrf_token }}'
                     },
                     type: "POST",
-                    contentType : 'application/json',
                     dataType: "json"
                 })
                 .done(function(json) {
                     $("#rec").html("");
                     $.each(json, function(idx,book) {
                     if(idx==0){
-                      $("#rec").append("<a href='"+book["url"]+"'><p class='mb-6 text-white rec_text'>"+book["name"]+" - "+book["author"]+"</p><a>");
+                      $("#rec").append("<a href='"+book["url"]+"' onclick='saveLog("+book["category"]+","+book["book_id"]+")' target='_blank'><p class='mb-6 text-white rec_text'>"+book["name"]+" - "+book["author"]+"</p><a>");
                     }else{
-                      $("#rec").append("<a href='"+book["url"]+"'><p class='mb-6 text-white rec_text'>"+book["name"]+" - "+book["author"]+" ("+book["sim"]+")</p><a>");
+                      $("#rec").append("<a href='"+book["url"]+"'  onclick='saveLog("+book["category"]+","+book["book_id"]+")' target='_blank'><p class='mb-6 text-white rec_text'>"+book["name"]+" - "+book["author"]+"</p><a>");
                     }
                     });
                 })
