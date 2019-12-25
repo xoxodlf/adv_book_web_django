@@ -21,6 +21,7 @@
 .overlay {
     background-color:rgb(205, 149, 87,0.7);
     opacity: 1;
+    height: 114%;
 }
 
 rec_text{
