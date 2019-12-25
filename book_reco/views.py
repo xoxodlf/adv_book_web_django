@@ -5,14 +5,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from django.shortcuts import render
 from datetime import datetime
-import pandas as pd
 from django.db import connections
 # Create your views here.
 
 
 def index2(request):
     request.session.create()
-    print(request.session.session_key)
     UserTime.objects.create(session_id = request.session.session_key,in_field=datetime.now(),last_action=datetime.now())
     book_list = Books.objects.filter(category_id=1).order_by('name')
     template = loader.get_template('book_reco/index1.html')
@@ -44,11 +42,9 @@ def saveLog(request):
 def get_book_list(request):
     category_id = request.POST.get('category_id')
     book_list = Books.objects.filter(category_id=category_id)
-    query, params = book_list.query.sql_with_params()
-    df = pd.read_sql_query(query, connections['default'], params=params)
     books = []
-    for a,b in zip(df['name'],df['book_id']):
-        book = {'name' : a, 'book_id' : b}
+    for bb in book_list:
+        book = {'name' : bb.name, 'book_id' : bb.book_id}
         books.append(book)
     context = {
         'books' : books
@@ -63,7 +59,6 @@ def recommend_json(request):
     ut.save()
     UserAction.objects.create(session_id=request.session.session_key, user_action='reco', time=datetime.now(), category=category_id, book_no=book_id)
     book = Books.objects.filter(book_id=book_id)[0]
-    print(book_id,category_id)
     cosim_list=[]
     if category_id==1:
         cosim_list = Cossim.objects\
@@ -106,7 +101,6 @@ def recommend_json(request):
     json_str += ("\"author\": \"" + book.author + "\",")
     json_str += ("\"url\": \"" + book.url + "\"")
     json_str += "},"
-    print(cosim_list)
     for i in cosim_list:
         json_str += "{"
         json_str += ("\"name\": \""+i.book_id1.name+"\",")
