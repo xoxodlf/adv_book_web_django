@@ -10,9 +10,12 @@
     }
 }
 @media (max-width: 768px) {
+    body {
+        height : 110%;
+    }
     .right-box {
-        margin-top: 328px;
-        height: 60%;
+        margin-top: 420px;
+        height: 50%;
         min-height: 0;
         padding-bottom: 0;
     }
@@ -21,7 +24,7 @@
 .overlay {
     background-color:rgb(205, 149, 87,0.7);
     opacity: 1;
-    height: 118%;
+    height: 100%;
 }
 
 rec_text{
